@@ -1,0 +1,6 @@
+The concept of deep and shallow copy is implemented on objects b and b1.
+Initial Value of b = 100;
+and b1 =100;
+
+b1 updtaes to 50;
+but b doesnt just because the value was copied not the address;
