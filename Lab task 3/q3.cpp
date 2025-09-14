@@ -28,6 +28,12 @@ class Linkedlist{
     Linkedlist(){
         head=nullptr;
     }
+    Node* getHead(){
+        return head;
+    }
+    void setHead(Node * n){
+        head=n;
+    }
     void InsertAtEnd(int val){
         Node * newNode = new Node(val);
         if(head==nullptr){
@@ -49,7 +55,28 @@ class Linkedlist{
         }
     }
 };
+Node *reverseList(Node *head,int k){
+    Node *temp = head;
+    for(int i=0;i<k;i++){
+        if(temp==nullptr){
+            return head;
+        }
+        temp=temp->getNext();
+    }
+    
+    Node* newNext=reverseList(temp,k);
 
+    temp=head;
+    Node*next;
+    for(int i=0;i<k;i++){
+        next=temp->getNext();
+        temp->setNext(newNext);
+        newNext=temp;
+        temp=next;
+    }
+    head=newNext;
+    return head;
+}
 int main() {
     Linkedlist list;
     
@@ -60,6 +87,9 @@ int main() {
     list.InsertAtEnd(5);
     list.InsertAtEnd(6);
     list.InsertAtEnd(7);
+    list.InsertAtEnd(8);
+    // list.InsertAtEnd(9);
+    list.setHead(reverseList(list.getHead(),3));
     list.display();
     return 0;
 }
