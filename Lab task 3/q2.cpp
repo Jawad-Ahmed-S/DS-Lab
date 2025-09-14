@@ -40,27 +40,63 @@ class Linkedlist{
         }
         temp->setNext(newNode);
     }
+    Node *getHead(){
+        return head;
+    }
+    void setHead(Node *ptr){
+        head=ptr;
+    }
     void display(){
         
         Node *temp=head;
+        cout<<endl;
         while(temp != nullptr){
             cout<<temp->getData()<<" ";
             temp=temp->getNext();
         }
     }
-    void mergeSortedList(Linkedlist &other){
-        Node *temp1=head,*temp2=other.head;
-        if()
-        while(temp1->getNext()!=nullptr ||temp2->getNext()!=nullptr  ){
-            if(temp1->getData()<temp2->getData()){
-                
-            }
-        };
-    };
 };
-//loop ke bahir head set karo and temp2 ko dekho loop me hoata hai ya bahir hi
+
+Node* mergeLists(Linkedlist *list1,Linkedlist *list2){
+    Node *temp1,*temp2,*curr=nullptr,*head=nullptr;
+    temp1 = list1->getHead();
+    temp2 = list2->getHead();
+
+    
+    if(temp1->getData()<temp2->getData()){
+    head=temp1;
+    curr=temp1;
+    temp1=temp1->getNext();
+}
+else{
+    head=temp2;
+    curr=temp2;
+    temp2=temp2->getNext();
+}
+
+while(temp1!=nullptr && temp2!=nullptr){
+    
+    if(temp1->getData()<temp2->getData()){
+        curr->setNext(temp1);
+        temp1=temp1->getNext();
+    }
+    else{
+        curr->setNext(temp2);
+        temp2=temp2->getNext();
+    }
+    curr=curr->getNext();
+}
+if(temp1==nullptr){
+    curr->setNext(temp2);
+}
+else{
+    curr->setNext(temp1);
+}
+
+    return head;
+}
 int main() {
-    Linkedlist list1,list2,list3;
+    Linkedlist list1,list2,final;
     
     list1.InsertAtEnd(1);
     list1.InsertAtEnd(3);
@@ -72,6 +108,8 @@ int main() {
     list2.InsertAtEnd(5);
     list2.InsertAtEnd(6);
     list2.display();
-
+    final.setHead(mergeLists(&list1,&list2));
+    cout<<"\nMerged List : ";
+    final.display();
     return 0;
 }

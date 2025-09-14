@@ -49,13 +49,17 @@ class Linkedlist{
         }
     }
 };
+
 int main() {
     Linkedlist list;
     
     list.InsertAtEnd(1);
     list.InsertAtEnd(2);
     list.InsertAtEnd(3);
-    list.InsertAtEnd(1);
+    list.InsertAtEnd(4);
+    list.InsertAtEnd(5);
+    list.InsertAtEnd(6);
+    list.InsertAtEnd(7);
     list.display();
     return 0;
 }
