@@ -1,0 +1,5 @@
+Q3A: Firstly , it will be adding the for the 1st (n) and then will be for n-1 which have seprate call.
+ so, in Stack we will have n at bottom and then n-1 and so on.
+
+Q3B: It will be processing the case where (n=0) and then the upper one and so on.
+In Stack, the first element would be the where (n=0) and then it adds to that n in the upper calls
