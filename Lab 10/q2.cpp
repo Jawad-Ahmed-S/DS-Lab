@@ -72,7 +72,7 @@ class Heap{
         }
         cout<<endl;
     }
-    void isBinaryHeap(){
+    bool isBinaryHeap(){
         
         for(int i=0;i<(size-2)/2;i++){
             int l = left(i);
