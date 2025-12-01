@@ -23,7 +23,7 @@ class Node{
     }
 };
 class Linkedlist{
-    Node *list;
+    
     Node *head;
     public:
     Linkedlist(){
@@ -41,7 +41,17 @@ class Linkedlist{
         }
 
     }
-    
+    Node* getHead(){
+        return head;
+    }
+    void display(){
+        Node* curr=head;
+        while(curr!=nullptr){
+            cout<<curr->getVal()<<" , ";
+            curr = curr->getNext();
+        }
+        cout<<endl;
+    }
     
 };
 
@@ -50,8 +60,8 @@ class HashMap{
     int size;
 
     public:
-    HashMap(int size){
-        this->size=size;
+    HashMap(){
+        size=100;
         array = new Linkedlist[size];
     }
     int hash(string key){
@@ -61,16 +71,36 @@ class HashMap{
         }
         return sum%size;
     }
-    void insert(string key){
+    void Add_Record(string key){
         array[hash(key)].InsertAtBegining(key);
+    }
+    int search(string key){
+        Node *temp = array[hash(key)].getHead();
+        while(temp!=nullptr){
+
+            if(key==temp->getVal()){
+                return hash(key);
+            }
+            temp=temp->getNext();
+        }
+        cout<<"Not Found!"<<endl;
+        return -1;
+    }
+    void display(){
+        for(int i=0;i<size;i++){
+            if(array[i].getHead()!=nullptr)
+            array[i].display();
+            cout<<endl;
+        }
     }
 
 };
 int main() {
-    HashMap test(10);
-    test.insert("jawad");
-    test.insert("hadj");
-    test.insert("ahmed");
-    test.insert("uytiu");
+    HashMap test;
+    test.Add_Record("jawad");
+    test.Add_Record("ahmed");
+    test.search("jawad");
+    test.display();
+
     return 0;
 }
